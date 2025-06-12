@@ -22,7 +22,7 @@ public class Mission
     public int RocketStatusId { get; set; }
     public decimal? Price { get; set; }
     [Required]
-    public int MissionStatusId { get; set; }
+    public int? MissionStatusId { get; set; }
     public int? CreatedByUserId { get; set; }
     
 }

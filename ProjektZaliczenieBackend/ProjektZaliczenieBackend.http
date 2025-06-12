@@ -4,3 +4,66 @@ GET {{ProjektZaliczenieBackend_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Authentication Tests ###
+
+### Register new user
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "Test123!",
+    "email": "test@example.com"
+}
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "Test123!"
+}
+
+### Mission Tests ###
+
+### Create new mission
+POST http://localhost:5000/api/mission
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+    "name": "Test Mission",
+    "description": "Test mission description",
+    "startDate": "2024-03-20T10:00:00",
+    "endDate": "2024-03-21T10:00:00",
+    "rocketStatus": "Ready",
+    "missionStatus": "Planned"
+}
+
+### Get all missions
+GET http://localhost:5000/api/mission
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### Get mission by ID
+GET http://localhost:5000/api/mission/1
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### Update mission
+PUT http://localhost:5000/api/mission/1
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+    "name": "Updated Mission",
+    "description": "Updated mission description",
+    "startDate": "2024-03-20T10:00:00",
+    "endDate": "2024-03-21T10:00:00",
+    "rocketStatus": "InProgress",
+    "missionStatus": "Active"
+}
+
+### Delete mission
+DELETE http://localhost:5000/api/mission/1
+Authorization: Bearer YOUR_TOKEN_HERE
